@@ -1,1 +1,109 @@
+//onClick Change the background and text
+
+----------------------------******************----------------------------------------
+
+//HTML file
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  
+  </body>
+</html>
+
+----------------------------******************----------------------------------------
+
+//CSS file
+
+*{
+  padding:0px;
+  margin:0px;
+  box-sizing: border-box;
+}
+ 
+
+div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vmin;
+  width:100%;
+
+}
+
+ button{
+ width:210px;
+  height: 60px; 
+  font-size: 24px;
+  background-color:rgb(227, 116, 227);
+  color: white;
+  border:5px solid white;
+  margin-top: 50px;
+  border-radius: 10px;
+}
+
+----------------------------******************----------------------------------------
+
+//App.js
+
+import React,{useState} from "react";
+
+const App=()=>{
+
+    const initialColor="coral";
+    const [initial, final]=useState(initialColor);
+
+    const[name, setName] = useState("Click Me");
+
+    
+     const Update=()=>{
+        let finalColor="aqua";
+        final(finalColor);
+        setName("Hi! How are You?");
+};
+
+    const Same=()=>{
+        final(initialColor);
+        setName("Click Me");
+    };
+
+    return(
+        <div style={{backgroundColor:initial}}>
+            <button onClick={Update} onDoubleClick={Same}>{name}</button>
+        </div>
+
+    )
+};
+export default App;
+
+----------------------------******************----------------------------------------
+
+//index.js
+
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+
+ReactDOM.render(
+  <App></App>,document.querySelector("#root")
+);
+
 
