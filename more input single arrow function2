@@ -67,3 +67,114 @@ button{
   background-color:azure;
 }
 
+-------------------*************************--------------------------
+//App.js
+
+import React,{useState} from "react";
+
+const App=()=>{
+
+  const [Fullname, SetFullName]=useState({
+    ftName:"",
+    ltName:"",
+    mail:"",
+    mobileNum:"",
+  });
+
+  const InputOne=(e)=>{
+    // const value=e.target.value;
+    // const name=e.target.name;
+
+    //Instead of two line, we are writing this
+    const {value , name}=e.target
+
+    //This means e.target.value and e.target.name
+
+      //------------First Name-----------------
+    SetFullName((preValue)=>{
+      if(name==="ftName"){
+        return{
+          ftName:value,
+          ltName:preValue.ltName,
+          mail:preValue.mail,
+          mobileNum:preValue.mobileNum,
+        };
+      }
+
+       //------------Last Name-----------------
+      
+      else if(name==="ltName"){
+        return{
+          ltName:value,
+          ftName:preValue.ftName,
+          mail:preValue.mail,
+          mobileNum:preValue.mobileNum,
+        };
+      }
+
+       //------------Email -----------------
+
+       else if(name==="mail"){
+        return{
+          ltName:preValue.mail,
+          ftName:preValue.ftName,
+          mail:value,
+          mobileNum:preValue.mobileNum,
+        };
+      }
+
+       //------------Phone Number-----------------
+
+       else if(name==="mobileNum"){
+        return{
+          ltName:preValue.ltName,
+          ftName:preValue.ftName,
+          mail:preValue.mail,
+          mobileNum:value,
+        };
+      }
+
+
+    });
+  };
+
+  const SubmitMe=(event)=>{
+    event.preventDefault();
+    alert("You have Entered");
+    alert([Fullname.ftName , Fullname.ltName , Fullname.mail , Fullname.mobileNum]);
+  }
+
+
+
+  return(
+    <>
+    <div id="outer">
+      <h1>Hello {Fullname.ftName}  {Fullname.ltName} <br></br> {Fullname.mobileNum} <br></br> {Fullname.mail}  </h1>
+      <input type="text" placeholder="Enter your First Name" onChange={InputOne} name="ftName"
+      value={Fullname.ftName}></input>
+      <input type="text" placeholder="Enter your Last Name" onChange={InputOne} name="ltName"
+      value={Fullname.ltName}></input>
+      <input type="email" placeholder="Enter your Email Name" onChange={InputOne} name="mail"
+      value={Fullname.mail}></input>
+      <input type="number" placeholder="Enter your Mobile Number" onChange={InputOne} name="mobileNum"
+      value={Fullname.mobileNum}></input>
+      <button onClick={SubmitMe}>submit😕</button>
+    </div>
+    </>
+  )
+}
+
+export default App;
+
+-------------------*************************--------------------------
+//index.js
+
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import "./index.css";
+
+ReactDOM.render(
+  <App></App>,
+  document.querySelector("#root")
+);
