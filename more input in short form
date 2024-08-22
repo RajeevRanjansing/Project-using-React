@@ -1,0 +1,138 @@
+---------------******************----------------------
+//HTML file
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+
+  </body>
+</html>
+
+---------------******************----------------------
+//CSS File
+
+*{
+  padding:0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+#root{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vmin;
+}
+#outer{
+  border:2px solid black;
+  text-align: center;
+  background-color: cadetblue;
+  border-radius: 10px;
+
+}
+
+h1{
+  margin-top: 50px;
+  font-size: 35px;
+}
+
+input{
+  width:80%;
+  margin-top: 30px;
+  height: 45px;
+  font-size: 17px;
+}
+button{
+  width:35%;
+  margin-top: 40px;
+  height: 45px;
+  font-size: 19px;
+  background-color:azure;
+}
+
+
+---------------******************----------------------
+
+//App.js
+
+import React,{useState} from "react";
+
+const App=()=>{
+
+  const [Fullname, SetFullName]=useState({
+    ftName:"",
+    ltName:"",
+    mail:"",
+    mobileNum:"",
+  });
+
+  const InputOne=(e)=>{
+
+    const {value , name}=e.target
+
+    SetFullName((preValue)=>{
+      return{
+        ...preValue,
+        [name]:value,
+      }
+    })
+
+  };
+
+
+ return(
+    <>
+    <div id="outer">
+      <h1>Hello {Fullname.ftName}  {Fullname.ltName} <br></br> {Fullname.mobileNum} <br></br> {Fullname.mail}  </h1>
+      <input type="text" placeholder="Enter your First Name" onChange={InputOne} name="ftName"
+      value={Fullname.ftName}></input>
+      <input type="text" placeholder="Enter your Last Name" onChange={InputOne} name="ltName"
+      value={Fullname.ltName}></input>
+      <input type="email" placeholder="Enter your Email Name" onChange={InputOne} name="mail"
+      value={Fullname.mail}></input>
+      <input type="number" placeholder="Enter your Mobile Number" onChange={InputOne} name="mobileNum"
+      value={Fullname.mobileNum}></input>
+      <button >submit😕</button>
+    </div>
+    </>
+  )
+}
+
+export default App;
+
+
+---------------******************----------------------
+
+//index.js
+
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+
+ReactDOM.render(
+  <App></App>,
+  document.querySelector("#root")
+);
+
+
+
+
+
