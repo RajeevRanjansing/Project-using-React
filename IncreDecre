@@ -1,1 +1,142 @@
+---------------*********************----------------------
 
+//HTML file
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    
+  </body>
+</html>
+
+
+---------------*********************----------------------
+
+//CSS File
+
+*{
+  padding:0px;
+  margin:0px;
+  box-sizing: border-box;
+}
+
+
+#root{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:100vh;
+}
+
+.outer{
+  border:1px solid black;
+  height:40vh;
+  width:40vh;
+  background-color: cadetblue;
+  border-radius: 10px;
+}
+
+.heading{
+  background-color:chartreuse;
+  margin-top: 100px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+#buttonPor{
+  margin-top: 80px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+button{
+  height:70px;
+  width:150px;
+  font-size: 21px;
+  background-color:#2196F3;
+  color:white;
+  cursor: pointer;
+}
+
+
+
+---------------*********************----------------------
+
+//App.js
+
+import React,{useState} from "react";
+import "./index.css";
+
+const App=()=>{
+
+    const state=useState();
+
+    const [initial, final]=useState(0);
+
+    const increm=()=>{
+        final(initial+1);
+    };
+
+    const decrem=()=>{
+        if(initial >0){
+            final(initial-1); 
+        }
+        else{
+            alert("Zero is the lower value");
+        }
+    }
+
+
+
+    return(
+        <>
+        <div className="outer">
+            <div className="heading">
+                <h1 >{initial}</h1>
+            </div>
+
+            <div id="buttonPor">
+                <button onClick={increm} title="Increment">Increm</button>
+                <button onClick={decrem}>Decrem</button>
+            </div>
+
+        </div>
+        </>
+    )
+}
+
+export default App;
+
+
+---------------*********************----------------------
+
+//index.js
+
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+
+ReactDOM.render(
+  <App></App>,
+  document.querySelector("#root")
+);
