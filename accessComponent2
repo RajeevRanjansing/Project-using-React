@@ -1,3 +1,5 @@
+//If you have three file and you want to send data from file1 to file3. we can use provider, consumer method  
+
 -------------------*********************------------------------------
 
 //HTML file
@@ -127,5 +129,12 @@ ReactDOM.render(
     document.querySelector("#root")
 );
                                                                 //output=My name is Rajeev Singh
+
+
+--------------------------------------------------------------*******************************************************-------------------------------------------------------------------------------------
+
+//If you have three file and you want to send data from file1 to file3. This is the simple way to access data from file1 to file3
+
+
 
 
