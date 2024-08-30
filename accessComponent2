@@ -1,1 +1,131 @@
+-------------------*********************------------------------------
+
+//HTML file
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    
+  </body>
+</html>
+
+-------------------*********************------------------------------
+
+//App.js
+
+import React,{createContext} from "react";
+ import ComA from "./ComA";
+
+ const FirstName=createContext();
+ const lastName=createContext();
+ 
+const App=()=>{
+
+
+    return(
+        <>
+        <FirstName.Provider value={"Rajeev"}>
+        <lastName.Provider value={"Singh"}>
+        <ComA />
+        </lastName.Provider>
+        </FirstName.Provider>
+        </>
+    )
+}
+
+export default App;
+export {FirstName,lastName};
+
+-------------------*********************------------------------------
+
+//comA.jsx
+
+import React from "react";
+import ComB from "./ComB"
+
+const ComA=()=>{
+
+    return(
+        <ComB></ComB>
+    )
+}
+export default ComA;
+
+-------------------*********************------------------------------
+
+//comB.jsx
+
+import React from "react";
+import ComC from "./ComC";
+
+const ComB=()=>{
+
+    return(
+        <ComC></ComC>
+    )
+}
+export default ComB;
+
+-------------------*********************------------------------------
+
+//comC.jsx
+
+import React from "react";
+import {FirstName,lastName} from "./App";
+
+const ComC=()=>{
+
+    return(
+        <>
+        <FirstName.Consumer >
+            {(fname)=>{
+            return(
+                <lastName.Consumer>{(lname)=>{
+                    return(
+                    <h1>My name is {fname} {lname} </h1>
+                )
+                }}</lastName.Consumer>
+            );
+            
+            }}</FirstName.Consumer>
+        
+        </>
+    );
+};
+export default ComC;
+
+
+-------------------*********************------------------------------
+
+//index.js
+
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+
+ReactDOM.render(
+
+    <App></App>,
+    document.querySelector("#root")
+);
+                                                                //output=My name is Rajeev Singh
+
 
