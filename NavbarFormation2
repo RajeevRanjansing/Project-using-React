@@ -1,1 +1,136 @@
+--------------------*********************-----------------------
+
+//HTML file
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    
+  </body>
+</html>
+
+
+--------------------*********************-----------------------
+
+//About.jsx
+
+import React from "react";
+
+const About=()=>{
+
+    return(
+        <h1>Hello, I am a About Page</h1>
+    )
+
+}
+export default About;
+
+--------------------*********************-----------------------
+
+//Contact.jsx
+
+import React from "react";
+
+const Contact=()=>{
+
+    return(
+        <h1>Hello, I am a Contact Page</h1>
+    );
+
+}
+export default Contact;
+
+
+--------------------*********************-----------------------
+
+//Menu.jsx
+
+import React from "react";
+import { NavLink } from "react-router-dom";
+
+const Menu=()=>{
+
+    return(
+        <>
+        <h1>Hii</h1>
+  
+        <NavLink to="/">About us</NavLink>
+        <NavLink to="/Contact">Contact us</NavLink>
+
+        //or
+
+        <a href="/">About us</a>
+        <a href="/Contact">Contact</a>
+        </>
+        
+    )
+}
+export default Menu;
+
+
+--------------------*********************-----------------------
+
+//App.jsx
+
+import React from "react";
+import {Route, Routes} from "react-router-dom";
+import About from "./About";
+import Contact from "./Contact";
+import Menu from "./Menu";
+
+const App = () => {
+
+
+  return(
+    <>
+    <Menu></Menu>
+
+    <Routes>
+        <Route exact path='/'  element={<About></About>}></Route>
+        <Route exact path='/contact'  element={<Contact></Contact>}  />
+    </Routes>
+    
+  </>
+  )
+  };
+
+export default App;
+
+--------------------*********************-----------------------
+
+//index.jsx
+
+
+import React from "react";
+import App from "./App";
+import ReactDOM from "react-dom";
+import {BrowserRouter} from "react-router-dom";
+
+
+ReactDOM.render(
+  
+  <BrowserRouter>
+  <App></App>
+  </BrowserRouter>,
+  
+  document.querySelector("#root")
+);
+
 
